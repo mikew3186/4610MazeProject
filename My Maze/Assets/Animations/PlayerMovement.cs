@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody _body;
     public float speed = 10;
+    public float acceleration = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -17,13 +18,16 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        var speed = 5.0f;
+        transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * speed);
     }
 
     private void FixedUpdate(){
         var targetVelocity = Vector3.zero;
+        _body.angularVelocity = Vector3.zero;
 
-        if(Input.GetKey(KeyCode.W)){
+        
+        if(Input.GetKey(KeyCode.W)){ 
             targetVelocity.z  += 1;
         }
 
@@ -40,8 +44,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         targetVelocity =  targetVelocity.normalized;
+        targetVelocity = transform.rotation * targetVelocity;
         targetVelocity *= speed;
 
-        _body.velocity = targetVelocity;
+        _body.velocity = Vector3.MoveTowards(_body.velocity, targetVelocity, acceleration * Time.deltaTime);
+
     }
 }

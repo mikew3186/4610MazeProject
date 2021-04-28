@@ -24,10 +24,10 @@ public class AnimationController : MonoBehaviour
 
         _animator.SetBool("isRunning", isRunning);
 
-        if(isRunning){
-            var direction = Quaternion.LookRotation(flatVelocity);
-            body.MoveRotation(direction);
-        }
+        // if(isRunning){
+        //     var direction = Quaternion.LookRotation(flatVelocity);
+        //     body.MoveRotation(direction);
+        // }
 
     }
 }
