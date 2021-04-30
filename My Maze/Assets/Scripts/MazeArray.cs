@@ -31,6 +31,7 @@ public class MazeArray : MonoBehaviour
 
     private void GenerateNewMaze() {
         var mazeArray = GenerateMazeArray();
+        int x = setExit(mazeArray);
         _mazeGenerate.GenerateMaze(mazeArray);
     }
 
@@ -92,5 +93,34 @@ public class MazeArray : MonoBehaviour
            }
         }
         return mazeArray;
+    }
+
+    private int setExit(char[,] mazeArray){
+        int low = 1;
+        int high = mazeArray.GetLength(0) - 1;
+        int height = mazeArray.GetLength(0);
+
+        int doorPosition = Random.Range(high, low);
+        bool doorSet = false;
+
+        while(doorSet.Equals(false)){
+            if(mazeArray[doorPosition, height-2] == '#' && mazeArray[doorPosition+1, height-1] == '@'){
+                doorPosition = low;
+                mazeArray[doorPosition, height-1] =  '|';
+                doorSet = true;
+            }
+            else if(mazeArray[doorPosition, height-2] == '#'){
+                doorPosition = low;
+                mazeArray[doorPosition, height-1] = '|';
+                doorSet = true;
+
+            }
+            else{
+                mazeArray[doorPosition, height-1] = '|';
+                doorSet = true;
+            }
+        }
+        int x = doorPosition;
+        return x;
     }
 }
