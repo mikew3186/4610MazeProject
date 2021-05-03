@@ -24,7 +24,9 @@ public class MazeArray : MonoBehaviour
             for (int i = transform.childCount - 1; i >= 0; i--){
                 Destroy(transform.GetChild(i).gameObject);
             }
-            
+
+            GameVariables.gameSize += 4;
+            Debug.Log(GameVariables.gameSize);
             GenerateNewMaze();
         }
     }
@@ -32,10 +34,14 @@ public class MazeArray : MonoBehaviour
     private void GenerateNewMaze() {
         var mazeArray = GenerateMazeArray();
         int x = setExit(mazeArray);
+
         _mazeGenerate.GenerateMaze(mazeArray);
     }
 
     private char[,] GenerateMazeArray() {
+
+        //mazeSize = 51;
+        mazeSize = GameVariables.gameSize;
 
         char[,] mazeArray = new char[mazeSize, mazeSize];
 
@@ -121,6 +127,7 @@ public class MazeArray : MonoBehaviour
             }
         }
         int x = doorPosition;
+
         return x;
     }
 }

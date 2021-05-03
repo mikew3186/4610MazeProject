@@ -24,6 +24,7 @@ public class MazeGenerate : MonoBehaviour
         meshFilter.sharedMesh = mesh;
 
         var mazeSize = mazeArray.GetLength(0);
+        Debug.Log(mazeSize);
 
         var vertices = new List<Vector3>();
         var triangles = new List<int>();
