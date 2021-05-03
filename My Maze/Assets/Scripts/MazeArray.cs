@@ -20,6 +20,7 @@ public class MazeArray : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Space)){
             for (int i = transform.childCount - 1; i >= 0; i--){
                 Destroy(transform.GetChild(i).gameObject);
@@ -28,7 +29,20 @@ public class MazeArray : MonoBehaviour
             GameVariables.gameSize += 4;
             Debug.Log(GameVariables.gameSize);
             GenerateNewMaze();
+        }*/
+        
+        if (player.transform.position.x >= GameVariables.pBoundary || player.transform.position.x <= GameVariables.nBoundary || player.transform.position.z >= GameVariables.pBoundary || player.transform.position.z <= GameVariables.nBoundary)
+        {
+            for (int i = transform.childCount - 1; i >= 0; i--)
+            {
+                Destroy(transform.GetChild(i).gameObject);
+            }
+
+            GameVariables.gameSize += 4;
+            Debug.Log("you did it");
+            GenerateNewMaze();
         }
+        
     }
 
     private void GenerateNewMaze() {
@@ -43,8 +57,11 @@ public class MazeArray : MonoBehaviour
 
     private char[,] GenerateMazeArray() {
 
-        //mazeSize = 51;
-        mazeSize = GameVariables.gameSize;
+        mazeSize = GameVariables.gameSize; 
+        GameVariables.pBoundary = (mazeSize - 3) / 2;
+        GameVariables.nBoundary = -((mazeSize - 1) / 2);
+        //Debug.Log(GameVariables.pBoundary);
+        //Debug.Log(GameVariables.nBoundary);
 
         char[,] mazeArray = new char[mazeSize, mazeSize];
 
