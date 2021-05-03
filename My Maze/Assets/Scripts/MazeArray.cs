@@ -8,12 +8,12 @@ public class MazeArray : MonoBehaviour
     public int mazeSize = 25;
 
     private MazeGenerate _mazeGenerate;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
         _mazeGenerate = GetComponent<MazeGenerate>();
-
         GenerateNewMaze();
     }
 
@@ -36,6 +36,9 @@ public class MazeArray : MonoBehaviour
         int x = setExit(mazeArray);
 
         _mazeGenerate.GenerateMaze(mazeArray);
+        
+        //Reset the player's position to (0,0,0)
+        player.transform.position = new Vector3(0,0,0);
     }
 
     private char[,] GenerateMazeArray() {
