@@ -5,7 +5,7 @@ using Random=UnityEngine.Random;
 
 public class MazeArray : MonoBehaviour
 {
-    public int mazeSize = 25;
+    public int mazeSize;
 
     private MazeGenerate _mazeGenerate;
     public GameObject player;
@@ -39,7 +39,8 @@ public class MazeArray : MonoBehaviour
             }
 
             GameVariables.gameSize += 4;
-            Debug.Log("you did it");
+            Debug.LogFormat("You completed level {0}", GameVariables.level);
+            GameVariables.level++;
             GenerateNewMaze();
         }
         
@@ -60,8 +61,6 @@ public class MazeArray : MonoBehaviour
         mazeSize = GameVariables.gameSize; 
         GameVariables.pBoundary = (mazeSize - 3) / 2;
         GameVariables.nBoundary = -((mazeSize - 1) / 2);
-        //Debug.Log(GameVariables.pBoundary);
-        //Debug.Log(GameVariables.nBoundary);
 
         char[,] mazeArray = new char[mazeSize, mazeSize];
 

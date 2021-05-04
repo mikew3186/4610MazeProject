@@ -6,6 +6,7 @@ public class GameVariables : MonoBehaviour
 {
 
     public static int gameSize = 15;
+    public static int level = 1;
 
     //boundary variables
     public static int pBoundary;
