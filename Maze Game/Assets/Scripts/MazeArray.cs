@@ -20,16 +20,7 @@ public class MazeArray : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.Space)){
-            for (int i = transform.childCount - 1; i >= 0; i--){
-                Destroy(transform.GetChild(i).gameObject);
-            }
 
-            GameVariables.gameSize += 4;
-            Debug.Log(GameVariables.gameSize);
-            GenerateNewMaze();
-        }*/
         
         if (player.transform.position.x >= GameVariables.pBoundary || player.transform.position.x <= GameVariables.nBoundary || player.transform.position.z >= GameVariables.pBoundary || player.transform.position.z <= GameVariables.nBoundary)
         {
@@ -41,6 +32,7 @@ public class MazeArray : MonoBehaviour
             GameVariables.gameSize += 4;
             Debug.LogFormat("You completed level {0}", GameVariables.level);
             GameVariables.level++;
+            GameVariables.timeElapsed = 0;
             GenerateNewMaze();
         }
         
