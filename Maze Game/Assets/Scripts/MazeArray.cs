@@ -113,32 +113,28 @@ public class MazeArray : MonoBehaviour
     }
 
     private int setExit(char[,] mazeArray){
+        
         int low = 1;
         int high = mazeArray.GetLength(0) - 1;
+        
         int height = mazeArray.GetLength(0);
 
-        int doorPosition = Random.Range(high, low);
+        int doorPosition = Random.Range(low, high);
         bool doorSet = false;
 
         while(doorSet.Equals(false)){
-            if(mazeArray[doorPosition, height-2] == '#' && mazeArray[doorPosition+1, height-1] == '@'){
-                doorPosition = low;
-                mazeArray[doorPosition, height-1] =  '|';
-                doorSet = true;
-            }
-            else if(mazeArray[doorPosition, height-2] == '#'){
-                doorPosition = low;
-                mazeArray[doorPosition, height-1] = '|';
-                doorSet = true;
-
+            if(mazeArray[doorPosition, height-2] == '#'){
+                doorPosition++;
+                if(doorPosition == high-1){
+                    doorPosition = low+1;
+                }
             }
             else{
                 mazeArray[doorPosition, height-1] = '|';
                 doorSet = true;
             }
         }
-        int x = doorPosition;
 
-        return x;
+        return doorPosition;
     }
 }
