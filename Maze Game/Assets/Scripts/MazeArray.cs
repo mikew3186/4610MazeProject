@@ -30,7 +30,6 @@ public class MazeArray : MonoBehaviour
             }
 
             GameVariables.gameSize += 4;
-            Debug.LogFormat("You completed level {0}", GameVariables.level);
             GameVariables.level++;
             GameVariables.timeElapsed = 0;
             GenerateNewMaze();

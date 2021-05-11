@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b53b9a9805c6440928dabaef33e117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazeSize: 15
+  mazeSize: 0
   player: {fileID: 626586270}
 --- !u!4 &1145722976
 Transform:
