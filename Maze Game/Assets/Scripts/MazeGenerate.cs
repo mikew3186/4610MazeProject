@@ -167,7 +167,7 @@ public class MazeGenerate : MonoBehaviour
         boxObject.transform.position = new Vector3(x + width/2f - centerOffset, 0, z + height/2f - centerOffset);
 
         var boxCollider = boxObject.AddComponent<BoxCollider>();
-        boxCollider.size = new Vector3(width, 1, height);
+        boxCollider.size = new Vector3(width, 2, height);
 
     }
 
