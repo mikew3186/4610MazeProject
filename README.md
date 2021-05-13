@@ -27,4 +27,4 @@ Next, open Unity Hub and add the downloaded project 'Maze Game' to Unity Hub. Th
 
 
 YOUTUBE LINK:
-*insert link here*
+https://youtu.be/qccA1nGnE5Q 
